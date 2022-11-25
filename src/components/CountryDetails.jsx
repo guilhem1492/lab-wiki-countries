@@ -45,7 +45,7 @@ function CountryDetails(props) {
                     {foundCountry.borders.map((el) => {
                       return (
                         <li>
-                          <Link to={el}>{el}</Link>
+                          <Link to={`/${el}`}>{el}</Link>
                         </li>
                       );
                     })}

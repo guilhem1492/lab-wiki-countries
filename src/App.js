@@ -13,8 +13,7 @@ function App() {
         <div className="row">
           <CountriesList />
           <Routes>
-            <Route path=":countryId" element={<CountryDetails />} />
-            {/* NOT CONVENIENT I GUESS: <Route path=":countryId/:countryId" element={<CountryDetails />} /> */}
+            <Route path="/:countryId" element={<CountryDetails />} />
           </Routes>
         </div>
       </div>

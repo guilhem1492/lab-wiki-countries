@@ -15,6 +15,11 @@ const CountriesList = () => {
               className="list-group-item list-group-item-action"
               to={el.alpha3Code}
             >
+              <img
+                src={`https://flagpedia.net/data/flags/icon/144x108/${el.alpha2Code.toLowerCase()}.png`}
+                alt={el.name.official}
+                style={{ width: '5%', margin: '0.5rem' }}
+              />
               {el.name.official}
             </Link>
           );
