@@ -1,16 +1,28 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import countriesArray from '../countries.json';
+//import countriesArray from '../countries.json';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function CountryDetails(props) {
-  const { countryId } = useParams();
-  console.log('countryId', countryId);
+  // const { alpha3Code } = useParams();
+  // console.log('alpha3Code', alpha3Code);
 
-  // Method .find() returns the first found matching element,
-  // or `null` if no matching element is found.
-  const foundCountry = countriesArray.find((el) => {
-    return el.alpha3Code === countryId;
-  });
+  // const foundCountry = countriesArray.find((el) => {
+  //   return el.alpha3Code === alpha3Code;
+  // });
+
+  const [foundCountry, setFoundCountry] = useState(null);
+  const { alpha3Code } = useParams();
+  console.log('alpha3Code', alpha3Code);
+
+  useEffect(() => {
+    axios
+      .get(' https://ih-countries-api.herokuapp.com/countries/' + alpha3Code)
+      .then((response) => {
+        setFoundCountry(response.data);
+      });
+  }, [alpha3Code]);
 
   return (
     <div className="col-7">

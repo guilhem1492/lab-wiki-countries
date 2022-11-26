@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import countriesArray from '../countries.json';
+//import countriesArray from '../countries.json';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const CountriesList = () => {
-  const [countries, setCountries] = useState(countriesArray);
+  //const [countries, setCountries] = useState(countriesArray);
+
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://ih-countries-api.herokuapp.com/countries')
+      .then((response) => {
+        console.log('response.data', response.data);
+        setCountries(response.data);
+      });
+  }, []);
 
   return (
     <div className="col-5" style={{ maxHeight: '90vh', overflow: 'scroll' }}>

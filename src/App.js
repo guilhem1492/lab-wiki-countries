@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <div className="row">
           <CountriesList />
           <Routes>
-            <Route path="/:countryId" element={<CountryDetails />} />
+            <Route path="/:alpha3Code" element={<CountryDetails />} />
           </Routes>
         </div>
       </div>
